@@ -544,7 +544,7 @@ TBG.Main.Helpers.ajax = function(url, options) {
 			}
 		},
 		onSuccess: function (response) {
-			var json = response.responseJSON;
+            var json = response.responseJSON;
 			if (json || (options.success && options.success.update)) {
 				if (json && json.forward != undefined) {
 					document.location = json.forward;
