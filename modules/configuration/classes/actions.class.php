@@ -1502,16 +1502,11 @@
 		{
 			$this->too_short = false;
 			$findstring = $request['findstring'];
-			if (mb_strlen($findstring) >= 1)
-			{
-				$this->users = TBGUsersTable::getTable()->findInConfig($findstring);
-				$this->total_results = count($this->users);
-			}
-			else
-			{
-				$this->too_short = true;
-			}
-			switch ($findstring)
+			
+            $this->users = TBGUsersTable::getTable()->findInConfig($findstring);
+			$this->total_results = count($this->users);
+			
+            switch ($findstring)
 			{
 				case 'unactivated':
 					$this->findstring = TBGContext::getI18n()->__('Unactivated users');
