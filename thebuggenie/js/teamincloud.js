@@ -14,7 +14,13 @@ TIC._run_jQuery_style = function(f){
 
 TIC.init = function(){
     for(var i=0;i<TIC.objects.length;i++){
-        if('init' in TIC.objects[i]) TIC.objects[i].init();
+        if('init' in TIC.objects[i]) {
+            try{
+                TIC.objects[i].init();
+            }catch(e){
+                
+            }
+        }
     }
 };
 
