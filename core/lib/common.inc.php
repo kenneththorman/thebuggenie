@@ -382,19 +382,29 @@
 	{
 		$tbg_response = TBGContext::getResponse();
 		$tbg_response->addJavascript('prototype.js', true, true);
-		$tbg_response->addJavascript('jquery-1.6.2.min.js', true, true);
-		$tbg_response->addJavascript('builder.js');
+		// START:   Added jQuery
+        $tbg_response->addJavascript('jquery-ui-1.8.24.js', true, true);
+        // END:     Added jQuery
+        $tbg_response->addJavascript('jquery-1.8.2.min.js', true, true);
+        $tbg_response->addJavascript('builder.js');
 		$tbg_response->addJavascript('effects.js');
 		$tbg_response->addJavascript('dragdrop.js');
 		$tbg_response->addJavascript('controls.js');
 		$tbg_response->addJavascript('jquery.markitup.js');
 		$tbg_response->addJavascript('thebuggenie.js');
-		$tbg_response->addJavascript('tablekit.js');
-
+        $tbg_response->addJavascript('tablekit.js');
+		// START:   Added main js controler
+        $tbg_response->addJavascript('teamincloud.js');
+        // END:     Added main js controler
+        // START:   Added contectual menu
+        $tbg_response->addJavascript('jquery.ui.position.js');
+        $tbg_response->addJavascript('jquery.contextMenu.js');
+        $tbg_response->addJavascript('contextualMenuHandler.js');
+        // END:     Added contectual menu
+        
 		$jsstrings = array();
 		$sepjs = array();
-
-		// Add scripts to minify and non-minify lists
+        // Add scripts to minify and non-minify lists
 		foreach ($tbg_response->getJavascripts() as $script => $minify)
 		{
 			if ($minify == true && file_exists(THEBUGGENIE_PATH . THEBUGGENIE_PUBLIC_FOLDER_NAME . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . $script))
@@ -413,11 +423,16 @@
 		$tbg_response = TBGContext::getResponse();
 		$cssstrings = array();
 		$sepcss = array();
-
+        
+        //Added jquery theme
+        $tbg_response->addStylesheet(TBGContext::getTBGPath().'themes/'.TBGSettings::getThemeName().'/jqueryui/jquery-ui-1.8.24.css',false);
+        $tbg_response->addStylesheet(TBGContext::getTBGPath().'themes/'.TBGSettings::getThemeName().'/jquerycontextMenu/jquery.contextMenu.css',false);
+        //Added jquery theme
+        
 		// Add stylesheets to minify and non-minify lists
 		foreach ($tbg_response->getStylesheets() as $stylesheet => $minify)
 		{
-			if ($minify == true && file_exists(THEBUGGENIE_PATH . THEBUGGENIE_PUBLIC_FOLDER_NAME . DIRECTORY_SEPARATOR . 'themes' . DIRECTORY_SEPARATOR . TBGSettings::getThemeName() . DIRECTORY_SEPARATOR .$stylesheet))
+            if ($minify == true && file_exists(THEBUGGENIE_PATH . THEBUGGENIE_PUBLIC_FOLDER_NAME . DIRECTORY_SEPARATOR . 'themes' . DIRECTORY_SEPARATOR . TBGSettings::getThemeName() . DIRECTORY_SEPARATOR .$stylesheet))
 				$cssstrings[] = 'themes/'.TBGSettings::getThemeName().'/'.$stylesheet;
 			else
 				$sepcss[] = $stylesheet;
