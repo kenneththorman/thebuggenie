@@ -528,7 +528,9 @@
 						}
 						else
 						{
-							$user = TBGUser::getByOpenID($openid->identity);
+							// This call below will fail if the user does not have an email
+							// so instead pass the entire openID object to the method
+							$user = TBGUser::getByOpenID($openid);
 						}
 						if ($user instanceof TBGUser)
 						{

@@ -301,10 +301,10 @@
 		 * 
 		 * @return TBGUser 
 		 */
-		public static function getByOpenID($identity)
+		public static function getByOpenID($openid)
 		{
 			$user = null;
-			if ($user_id = TBGOpenIdAccountsTable::getTable()->getUserIDfromIdentity($identity))
+			if ($user_id = TBGOpenIdAccountsTable::getTable()->getUserIDfromIdentity($openid->identity))
 			{
 				$user = TBGContext::factory()->TBGUser($user_id);
 			}
@@ -317,6 +317,10 @@
 				$user->setActivated();
 				$user->setEnabled();
 				$user->setValidated();
+
+				// Need to have a valid email otherwise the user->save() will fail
+				$attributes = $openid->getAttributes();
+				if (array_key_exists('contact/email', $attributes)) $user->setEmail($attributes['contact/email']);
 				$user->save();
 			}
 			
