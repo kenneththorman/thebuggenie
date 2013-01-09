@@ -710,7 +710,6 @@
 	$strings['Documentation: A documentation issue'] = 'Documentation: A documentation issue';
 	$strings['Documentation request'] = 'Documentation request';
 	$strings['Documentation URL'] = 'Documentation URL';
-	$strings['Wiki URL'] = 'Wiki URL';
 	$strings['Done'] = 'Done';
 	$strings['Do nothing'] = 'Do nothing';
 	$strings['Don\'t change the password'] = 'Don\'t change the password';
@@ -1244,7 +1243,6 @@
 	$strings['No description provided'] = 'No description provided';
 	$strings['No description set'] = 'No description set';
 	$strings['No documentation URL provided'] = 'No documentation URL provided';
-	$strings['No wiki URL provided'] = 'No wiki URL provided';
 	$strings['no, don\'t delete it'] = 'no, don\'t delete it';
 	$strings['No error message provided'] = 'No error message provided';
 	$strings['No files have been affected by this commit'] = 'No files have been affected by this commit';
@@ -2721,7 +2719,7 @@
 	$strings['You are a member of this team'] = 'You are a member of this team';
 	$strings['You are currently not registered in this scope'] = 'You are currently not registered in this scope';
 	$strings['You are involved with this issue and may be notified whenever it is updated or changed'] = 'You are involved with this issue and may be notified whenever it is updated or changed';
-	$strings['You are not allowed to access to this page'] = 'You are not allowed to access to this page';
+	$strings['You are not allowed to access this page'] = 'You are not allowed to access this page';
 	$strings['You are not allowed to add an item to this list'] = 'You are not allowed to add an item to this list';
 	$strings['You are not allowed to attach files here'] = 'You are not allowed to attach files here';
 	$strings['You are not allowed to do this'] = 'You are not allowed to do this';
