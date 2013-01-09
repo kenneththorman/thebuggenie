@@ -18,7 +18,6 @@
 		const CSV_PROJECT_QA_TYPE          = 'qa_type';
 		const CSV_PROJECT_DESCR            = 'descr';
 		const CSV_PROJECT_DOC_URL          = 'doc_url';
-		const CSV_PROJECT_WIKI_URL         = 'wiki_url';
 		const CSV_PROJECT_FREELANCE        = 'freelance';
 		const CSV_PROJECT_EN_BUILDS        = 'en_builds';
 		const CSV_PROJECT_EN_COMPS         = 'en_comps';
@@ -423,7 +422,7 @@
 								TBGSettings::SETTING_REQUIRE_LOGIN, TBGSettings::SETTING_ALLOW_REGISTRATION, TBGSettings::SETTING_ALLOW_OPENID, TBGSettings::SETTING_USER_GROUP,
 								TBGSettings::SETTING_RETURN_FROM_LOGIN, TBGSettings::SETTING_RETURN_FROM_LOGOUT, TBGSettings::SETTING_IS_PERMISSIVE_MODE,
 								TBGSettings::SETTING_REGISTRATION_DOMAIN_WHITELIST, TBGSettings::SETTING_SHOW_PROJECTS_OVERVIEW, TBGSettings::SETTING_KEEP_COMMENT_TRAIL_CLEAN,
-								TBGSettings::SETTING_TBG_NAME, TBGSettings::SETTING_TBG_TAGLINE, TBGSettings::SETTING_DEFAULT_CHARSET, TBGSettings::SETTING_DEFAULT_LANGUAGE,
+								TBGSettings::SETTING_TBG_NAME, TBGSettings::SETTING_TBG_NAME_HTML, TBGSettings::SETTING_DEFAULT_CHARSET, TBGSettings::SETTING_DEFAULT_LANGUAGE,
 								TBGSettings::SETTING_SERVER_TIMEZONE, TBGSettings::SETTING_SYNTAX_HIGHLIGHT_DEFAULT_LANGUAGE, TBGSettings::SETTING_SYNTAX_HIGHLIGHT_DEFAULT_INTERVAL,
 								TBGSettings::SETTING_SYNTAX_HIGHLIGHT_DEFAULT_NUMBERING, TBGSettings::SETTING_PREVIEW_COMMENT_IMAGES, TBGSettings::SETTING_HEADER_LINK,
 								TBGSettings::SETTING_MAINTENANCE_MESSAGE, TBGSettings::SETTING_MAINTENANCE_MODE, TBGSettings::SETTING_ICONSET);
@@ -436,7 +435,6 @@
 						switch ($setting)
 						{
 							case TBGSettings::SETTING_TBG_NAME:
-							case TBGSettings::SETTING_TBG_TAGLINE:
 								$value = TBGContext::getRequest()->getParameter($setting, null, false);
 								break;
 							case  TBGSettings::SETTING_SYNTAX_HIGHLIGHT_DEFAULT_INTERVAL:
@@ -2968,9 +2966,6 @@
 									
 								if (isset($activerow[self::CSV_PROJECT_DOC_URL]))
 									$project->setDocumentationUrl($activerow[self::CSV_PROJECT_DOC_URL]);
-
-								if (isset($activerow[self::CSV_PROJECT_WIKI_URL]))
-									$project->setWikiUrl($activerow[self::CSV_PROJECT_WIKI_URL]);
 									
 								if (isset($activerow[self::CSV_PROJECT_FREELANCE]))
 								{
