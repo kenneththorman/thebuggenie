@@ -315,14 +315,18 @@ EOT;
 				$password = TBGUser::createPassword(8);
 				$user->setPassword($password);
 				$user->save();
-				$link_to_activate = $this->generateURL('activate', array('user' => str_replace('.', '%2E', $user->getUsername()), 'key' => $user->getHashPassword()));
-				$parameters = compact('user', 'password', 'link_to_activate');
-				$messages = $this->getTranslatedMessages($subject, 'registeruser', $parameters, array($user));
+                
+                $email_address = $user->getEmail();
+                if (!empty($email_address)){
+                    $link_to_activate = $this->generateURL('activate', array('user' => str_replace('.', '%2E', $user->getUsername()), 'key' => $user->getHashPassword()));
+				    $parameters = compact('user', 'password', 'link_to_activate');
+				    $messages = $this->getTranslatedMessages($subject, 'registeruser', $parameters, array($user));
 
-				foreach ($messages as $message)
-				{
-					$this->sendMail($message);
-				}
+				    foreach ($messages as $message)
+				    {
+					    $this->sendMail($message);
+				    }
+                }
 				$event->setProcessed();
 			}
 		}
